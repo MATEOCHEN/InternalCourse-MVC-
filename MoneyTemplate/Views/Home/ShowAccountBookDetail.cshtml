@@ -1,0 +1,42 @@
+﻿@model List<MoneyTemplate.Models.ViewModel.Account>
+
+@{
+                /**/
+
+                ViewBag.Title = "ShowAccountBookDetail";
+}
+
+<table class="table table-bordered table-hover">
+    @{
+        var index = 1;
+    }
+    <tr>
+        <th>#</th>
+        <th>類別</th>
+        <th>日期</th>
+        <th>金額</th>
+        <th>備註</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @index
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+        </tr>
+        index++;
+    }
+</table>
