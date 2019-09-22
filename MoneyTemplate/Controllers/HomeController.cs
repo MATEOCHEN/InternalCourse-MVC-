@@ -1,9 +1,10 @@
-﻿using System;
-using MoneyTemplate.Models;
+﻿using MoneyTemplate.Models;
 using MoneyTemplate.Models.ViewModel;
 using System.Collections.Generic;
+using System.Web.Helpers;
 using System.Web.Mvc;
-using Type = MoneyTemplate.Models.ViewModel.Type;
+using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 
 namespace MoneyTemplate.Controllers
 {
@@ -36,9 +37,11 @@ namespace MoneyTemplate.Controllers
         }
 
         [HttpPost]
-        public void RecordAccount(Account account)
+        public JsonResult RecordAccount(Account account)
         {
             _accountBook.Add(account);
+            var detail = JsonConvert.SerializeObject(account);
+            return Json(detail);
         }
 
         [ChildActionOnly]
